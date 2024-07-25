@@ -1,40 +1,43 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
-int main(){
+int getMax(int arr[],int n){
+    int maxNum = INT_MIN;
 
+    for(int i=0;i<n;i++){
+        if(arr[i] > maxNum){
+            maxNum = arr[i];
+        }
+    }
+    return maxNum;
 
+}
 
-   int n;
-   cin>>n;
-   int arr[n];
-   for(int i=0;i<n;i++)
-   {
-       cin>>arr[i];
-   }
-   for(int i=1;i<n;i++)
-   {
-       int current=arr[i];
-       int j=i-1;
+int getMin(int arr[],int n){
+    int minNum = INT_MAX;
 
-       while(arr[j]>current && j>=0){
-        arr[j+1]=arr[j];
-        j--;
-       }
-       arr[j+1]=current;
-   }
+    for(int i=0;i<n;i++){
+        if(arr[i] < minNum){
+            minNum = arr[i];
+        }
+    }
+    return minNum;
 
+}
 
+int main()
+{
+    int n;
+    cin>>n;
+    int num[100];
 
-   for(int i=0;i<n;i++)
-   {
-       cout<<arr[i] <<"";
-       cout<<endl;
-   }
-
-
-
+    for( int i = 0; i<n; i++){
+        cin>>num[i];
+    }
+    cout<<"maximum number is " <<getMax(num,n) <<endl;
+    cout<<"minimum number is " <<getMin(num,n) <<endl;
 
     return 0;
 }
